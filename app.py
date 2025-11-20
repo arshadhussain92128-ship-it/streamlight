@@ -52,25 +52,24 @@ def extract_contact_info(page_text):
  
     response = requests.post(
     "http://your-local-ip:11434/api/generate",
-    json={"model": "llama3.1", "prompt": "Hello"}
-)
+    json={"model": "llama3.1", "prompt": "Hello"})
 
 data = response.json()
 st.write(data["response"])
 
  
-    try:
+try:
 
 
-        result_text = response["message"]["content"]
+   result_text = response["message"]["content"]
 
-        print("result_text:::::::::::::::", result_text)
+   print("result_text:::::::::::::::", result_text)
 
-        return json.loads(result_text)
+   return json.loads(result_text)
 
-    except Exception:
+except Exception:
 
-        return {"name": None, "email": None, "contact": None, "address": None}
+   return {"name": None, "email": None, "contact": None, "address": None}
  
 
 results = []
