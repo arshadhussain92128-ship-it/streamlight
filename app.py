@@ -1,6 +1,7 @@
 import pandas as pd
 
-import ollama
+import requests
+
 
 import json
 
@@ -49,14 +50,14 @@ def extract_contact_info(page_text):
 
     """
  
-    response = ollama.chat(
+    response = requests.post(
+    "http://your-local-ip:11434/api/generate",
+    json={"model": "llama3.1", "prompt": "Hello"}
+)
 
+data = response.json()
+st.write(data["response"])
 
-        model="tinyllama",
-
-        messages=[{"role": "user", "content": prompt}],
-
-    )
  
     try:
 
